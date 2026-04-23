@@ -62,7 +62,6 @@ jobs:
           cache-to: type=gha,mode=max
           
       - name: use kubectl to apply deployment
-        uses: azure/setup-kubectl@v3
         run: |
           sed -i "s|image: ${{ env.DOCKERHUB_REPO }}:.*|image: ${{ env.DOCKERHUB_REPO }}:${{ steps.tag.outputs.sha_short }}|" k8s/bankapp-deployment.yml
       
